@@ -1,0 +1,38 @@
+.jumbotron.home{
+	background-image: url("../images/BookBanner.jpg");
+	background-size: cover;
+	min-height: 250px;
+}
+
+#img1{
+	background-image: url("../images/OldBook.jpg");
+	background-size: cover;
+	
+
+}
+@media (max-width: 360px) {
+  .column-margin {
+    margin: 2px 0;
+  }
+
+  .row-margin{
+    margin: 1px 0;
+  }
+  img {
+    max-height: 300px;
+    
+  }
+}
+@media (max-width: 991px) {
+  .column-margin {
+    margin: 5px 0;
+  }
+
+  .row-margin{
+  	margin: 5px 0;
+  }
+  img {
+  	max-height: 300px;
+  	
+  }
+}

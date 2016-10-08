@@ -1,0 +1,42 @@
+p{
+	font-family:  'Lora', serif;
+}
+
+h1, h2, h3, h4
+{
+	font-family: 'Open Sans', sans-serif;
+}
+
+#text{
+  	font-size: 160%;
+}
+
+ #headerColor{
+ 	color:black;
+ 	font-weight:bold;
+ 	text-align: center;
+}
+@media(max-width: 412px){
+	#headerColor
+	{
+		color: white;
+		font-weight:normal;
+		text-align: center;
+	}
+
+	h1{
+		font-size:  180%;
+	}
+	h2{
+		font-size: 160%;
+	}
+}
+
+@media (max-width: 991px) {
+  #text{
+  	font-size: 130%;
+  }
+}
+
+
+ 
