@@ -4,7 +4,7 @@
   padding: 15px 0 0 0;
   margin: auto;
 }
-a:before { /* Just to give a little puddle of a shadow without adding another element */
+#book:before { /* Just to give a little puddle of a shadow without adding another element */
   content: '';
     display: block;
     width: 80%;
@@ -24,7 +24,7 @@ a:before { /* Just to give a little puddle of a shadow without adding another el
   top: -15px;
   z-index: -10;
 }
-v\/*Example adding pseudo element to give shelf depth*/
+/*Example adding pseudo element to give shelf depth*/
 .shelf:after {
   content: '';
   background: #686868;
@@ -68,44 +68,40 @@ v\/*Example adding pseudo element to give shelf depth*/
 <div class="container">
     <div class="row">
         <div class="col-xs-4 col-md-2">
-          <a href=""><img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" class="img-responsive book"></a>
+          <a id = "book" href=""><img src="/my-site/images/Baldur's Gate.jpg" class="img-responsive book"></a>
         </div>
         <div class="col-xs-4 col-md-2">
-          <a href=""><img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" class="img-responsive book"></a>
+          <a id = "book" href=""><img src="/my-site/images/Deus Ex.jpg" class="img-responsive book"></a>
         </div>
         <div class="col-xs-4 col-md-2">
-          <a href=""><img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" class="img-responsive book"></a>
+          <a id = "book" href=""><img src="/my-site/images/Diablo.jpg" class="img-responsive book"></a>
+        </div>
+
+        <div class="col-xs-12 shelf hidden-md hidden-lg"></div>
+
+        <div class="col-xs-4 col-md-2">
+          <a id = "book" href=""><img src="/my-site/images/Dishonored.jpg" class="img-responsive book"></a>
+        </div>  
+        <div class="col-xs-4 col-md-2">
+          <a id = "book" href=""><img src="/my-site/images/Fable.jpg" class="img-responsive book"></a>
+        </div>
+        <div class="col-xs-4 col-md-2">
+          <a id = "book" href=""><img src="/my-site/images/Mass Effect.jpg" class="img-responsive book"></a>
         </div>      
-        <div class="col-xs-12 shelf hidden-md hidden-lg"></div>
-        <div class="col-xs-4 col-md-2">
-          <a href=""><img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" class="img-responsive book"></a>
-        </div>
-        <div class="col-xs-4 col-md-2">
-          <a href=""><img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" class="img-responsive book"></a>
-        </div>
-        <div class="col-xs-4 col-md-2">
-          <a href=""><img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" class="img-responsive book"></a>
-        </div>  
+
         <div class="col-xs-12 shelf"></div>
+
         <div class="col-xs-4 col-md-2">
-          <a href=""><img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" class="img-responsive book"></a>
+          <a id = "book" href=""><img src="/my-site/images/The Last Of Us.jpg" class="img-responsive book"></a>
         </div>
         <div class="col-xs-4 col-md-2">
-          <a href=""><img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" class="img-responsive book"></a>
+          <a id = "book" href=""><img src="/my-site/images/Tomb Raider.jpg" class="img-responsive book"></a>
         </div>
         <div class="col-xs-4 col-md-2">
-          <a href=""><img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" class="img-responsive book"></a>
+          <a id = "book" href=""><img src="/my-site/images/SWTOR.jpg" class="img-responsive book"></a>
         </div>  
         <div class="col-xs-12 shelf hidden-md hidden-lg"></div>
-        <div class="col-xs-4 col-md-2">
-          <a href=""><img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" class="img-responsive book"></a>
-        </div>
-        <div class="col-xs-4 col-md-2">
-          <a href=""><img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" class="img-responsive book"></a>
-        </div>
-        <div class="col-xs-4 col-md-2">
-          <a href=""><img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" class="img-responsive book"></a>
-        </div>  
+
         <div class="col-xs-12 shelf"></div>
     </div>
 </div> 

@@ -29,6 +29,7 @@
  
  </head>
   <body>
+
       <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
           <div class="navbar-header">
@@ -42,7 +43,6 @@
           </div>  
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href = "/my-site/index">Home</a></li>
               <li><a href = "/my-site/ebooks.php">Ebooks</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Games<span class="caret"></span></a>
@@ -64,18 +64,7 @@
               <li><a href = "#">Donate</a></li>
               <li><a href = "#">Contact</a></li>
             </ul>
-              <!--
-              <form class="navbar-form" role="search" method = "post" action = "/my-site/search.php?t=1">
-                <div class="input-group">
-                   <input type="text" class="form-control" id="db-search" name = "search" placeholder="Search....">
-                  <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit" name = "submit"><i class="glyphicon glyphicon-search"></i></button>
-                  </div>
-                </div>
-              </form>-->
-
             </div><!--/.col-sm-->        
           </div><!--/.nav-collapse -->
         </div><!--/container-->
       </nav>
-<div class="alert alert-info" role="alert" style = "text-align: center">7/5: Ebooks have been updated to fix mistakes and provide a better design, and mobi was exchanged for azw3. The next upcoming games with be Dragon Age and Star Wars: The Old Republic.</div>
