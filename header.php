@@ -1,7 +1,6 @@
-
-<!--Header HTML -->
 <!DOCTYPE html>
 <html lang = "en">
+<head>
   <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,6 +17,46 @@
     <link rel="icon" href="/my-site/images/library_of_codexes_icon.ico" />
 
 
+  <style>
+.book {
+  padding: 15px 0 0 0;
+  margin: auto;
+}
+#book:before { /* Just to give a little puddle of a shadow without adding another element */
+  content: '';
+    display: block;
+    width: 80%;
+    height: 1em;
+    background: rgba(0,0,0,.35);
+    border-radius: 50%;
+    position: absolute;
+    bottom:-10px;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+    z-index:-5;
+}
+.shelf {
+  border-bottom: 30px solid #a5a5a5;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+  top: -15px;
+  z-index: -10;
+}
+/*Example adding pseudo element to give shelf depth*/
+.shelf:after {
+  content: '';
+  background: #686868;
+  height: 20px;
+  width: calc(100% + 40px); /*IE9+*/
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  margin: 0 -20px;
+}
+
+  </style>
     <title><?php echo $_tpl['title']?></title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
@@ -26,11 +65,10 @@
     <link href="/my-site/css/nav_style.css" rel='stylesheet' type = "text/css">
     <link href="/my-site/css/home_style.css" rel = 'stylesheet' type = "text/css">
     <link href="/my-site/css/footer.css" rel='stylesheet' type = "text/css">
- 
- </head>
-  <body>
-
-      <nav class="navbar navbar-default navbar-static-top">
+    <link href="/my-site/css/tooltip.css" rel='stylesheet' type = "text/css">
+</head>
+<header>
+      <nav class="navbar navbar-default navbar-static-top" style = "margin-bottom:0px; border-bottom: 0px;">
         <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -39,7 +77,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class ="navbar-brand" href = "#"><b>Library of Codexes</b></a>           
+            <a class ="navbar-brand" href = "/my-site/index"><b>Library of Codexes</b></a>           
           </div>  
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -61,10 +99,43 @@
             </ul>
             <div class="col-sm-3 col-md-3 pull-right">
               <ul class="nav navbar-nav">
-              <li><a href = "#">Donate</a></li>
+              <li><a data-toggle ="modal" href ="#donateModal"  >Donate</a></li>
               <li><a href = "#">Contact</a></li>
             </ul>
             </div><!--/.col-sm-->        
           </div><!--/.nav-collapse -->
         </div><!--/container-->
       </nav>
+
+       <!-- Modal -->
+  <div class="modal fade" id="donateModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 style="color:red; text-align: center;">&hearts; Thank You! &hearts;</h4>
+        </div>
+        <div class="modal-body" style = "text-align: center;">
+          <form role="form">
+            <div class="form-group">
+              <p>Your support helps keep Library of Codexes alive.</p>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_s-xclick">
+                  <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+                  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                </form>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</header>
