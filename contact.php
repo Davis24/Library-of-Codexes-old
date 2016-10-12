@@ -187,10 +187,3 @@ if ($result != NULL) {
 
 </div>
 <?php include ('footer.php'); ?>
-
-<!-- 		<label for="url">Website URL:</label> 
-		<input type="text" name="url" id="url" value="<?php get_data("url"); ?>" /><br />
-		
-	<label for="location">Location:</label>
-		<input type="text" name="location" id="location" value="<?php get_data("location"); ?>" /><br />
-	 -->
