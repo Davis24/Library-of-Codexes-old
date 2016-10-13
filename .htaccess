@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteRule ^about$ about.php [L]
-RewriteRule ^index$ index.php [L]
+RewriteRule ^$ home.php [L]
 RewriteRule ^game=([0-9]+)/[A-Za-z0-9\-\'\:]+/?$ game_page.php?g=$1 [L]
 RewriteRule ^author=([0-9]+)/[A-Za-z0-9\-\[\]\.]+/?$ author_show.php?a=$1 [L]
 RewriteRule ^collection=([0-9]+)/[A-Za-z0-9\-\[\]]+/?$ collection_show.php?co=$1 [L]

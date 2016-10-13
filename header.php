@@ -61,46 +61,7 @@ if(isset($_POST['submit']))
     <link rel="icon" href="/my-site/images/library_of_codexes_icon.ico" />
 
 
-  <style>
-.book {
-  padding: 15px 0 0 0;
-  margin: auto;
-}
-#book:before { /* Just to give a little puddle of a shadow without adding another element */
-  content: '';
-    display: block;
-    width: 80%;
-    height: 1em;
-    background: rgba(0,0,0,.35);
-    border-radius: 50%;
-    position: absolute;
-    bottom:-10px;
-    -webkit-filter: blur(5px);
-    filter: blur(5px);
-    z-index:-5;
-}
-.shelf {
-  border-bottom: 30px solid #a5a5a5;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-  top: -15px;
-  z-index: -10;
-}
-/*Example adding pseudo element to give shelf depth*/
-.shelf:after {
-  content: '';
-  background: #686868;
-  height: 20px;
-  width: calc(100% + 40px); /*IE9+*/
-  position: absolute;
-  top: 30px;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  margin: 0 -20px;
-}
 
-  </style>
     <title><?php echo $_tpl['title']?></title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
@@ -120,7 +81,7 @@ if(isset($_POST['submit']))
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class ="navbar-brand" href = "/my-site/index"><b>Library of Codexes</b></a>           
+            <a class ="navbar-brand" href = "/my-site/"><b>Library of Codexes</b></a>           
           </div>  
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -159,7 +120,6 @@ if(isset($_POST['submit']))
         <h3 style="color:red; text-align: center;">&hearts; Thank You! &hearts;</h3>
       </div>
       <div class="modal-body" style = "text-align: center;">
-        <form role="form">
           <div class="form-group">
             <p>Your support helps keep Library of Codexes alive.</p>
               <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -169,14 +129,13 @@ if(isset($_POST['submit']))
                 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
               </form>
           </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
       </div>
     </div>
   </div>
-</div>
+</div><!--modal fade-->
 
 <div class ="modal fade" id ="contactModal" role ="dialog">
   <div class = "modal-dialog">
@@ -186,6 +145,7 @@ if(isset($_POST['submit']))
         <h3 style="color:red; text-align: center;">Contact </h3>
       </div>
       <div class="modal-body" style = "text-align: center;">
+        <div class="form-group">
         <form role = "form"  method = "post" style = "font-size: 20px;" action ="index.php">
           <label for = "name" class = "col-sm-12 col-md-12 control-label">* Name: </label>
             <input type = "text" class = "form-control" id = "name" name ="name" placeholder = "Jaina Proudmoore" value = "<?php if(isset($name)) {echo htmlspecialchars($_POST['name']);}?>">
@@ -196,14 +156,14 @@ if(isset($_POST['submit']))
           <label for ="human" class = "col-sm-12 col-md-12 control-label"> * 2 + 7 = ? </label>
             <input type = "text" class = "form-control" id = "human" name ="human" placeholder = "15">
             <?php if(isset($errorHuman)){echo "<p class = 'text-danger'>$errorHuman</p>"; }?>
+        </form>
+        </div> 
       </div>    
       <div class="modal-footer">
-        <?php if(isset($result)){ echo $result;}?>
-        <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        <button class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
         <input type="submit" name="submit" id="submit" value="Send" class = "btn btn-md btn-primary" />
       </div>
     </div>
   </div>
 </div>
 
-</div>

@@ -16,7 +16,7 @@
 <div class = "jumbotron">
   <div class = "container">
     <h1 style = "font-weight:bold;">Ebooks</h1>
-    <p style = "text-align: center; font-weight:bold">Love our ebooks? <a href = "/my-site/donate.php?">Donate</a></p>
+    <p style = "text-align: center; font-weight:bold">Love our ebooks? <a href = "#donateModal" data-toggle = "modal">Donate</a></p>
   </div>
 </div>
 <div class = "container">
@@ -56,7 +56,7 @@
         <div class="col-md-4">
           <h2>Suggest a New Game</h2>
           <p>Don't see your favorite video game on the list then request it.</p>
-          <p><a class="btn btn-default" href="/my-site/unsubscribe.php?" role="button">Contact &raquo;</a></p>
+          <p><a class="btn btn-default" data-toggle="modal" href="#contactModal" role="button">Contact &raquo;</a></p>
        </div>
         <div class="col-md-2">
         
