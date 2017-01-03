@@ -1,50 +1,7 @@
-<?php
 
-if(isset($_POST['submit']) && isset($name))
-{
-
-  $name = $_POST['name'];
-  $message = $_POST['message'];
-  $human = intval($_POST['human']);
-
-  $from = "$name";
-  $to = 'site webaddres';
-  $subject = 'Message From Library of Codexes';
-  $body = "From: $name \n Message:\n $message";
-
-  if(!$_POST['name'])
-  {
-    $errorName = 'Please enter your name';
-  }
-  if(!$_POST['message'])
-  {
-    $errorMessage = 'Please enter a message';
-  }
-  if($human !== 9){
-    $errorHuman = 'Your anti-spam is incorrect';
-  }
-
-  if(!isset($errorName) && !isset($errorHuman) && !isset($errorMessage))
-  {
-    if(mail($to, $subject, $body, $from))
-    {
-      $result='<div class="alert alert-success">Thank You! I will look into it as soon as possible.</div>';
-    }
-    else
-    {
-      $result='<div class="alert alert-danger">Sorry there was an error sending your message.</div>';
-  
-    }
-  }
-
-}
-
-
-?>
-
+<!--Header HTML -->
 <!DOCTYPE html>
 <html lang = "en">
-<head>
   <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,24 +13,34 @@ if(isset($_POST['submit']) && isset($name))
          $_tpl['meta_desc'] = '';
       }
     ?>
-    <meta name = "description" content= "<?php echo $_tpl['meta_desc']?>">
-    <meta name = "keywords" content= "library, codexes, video games, reading, lore, codex, dishonored, mass effect">
-    <link rel="icon" href="/my-site/images/library_of_codexes_icon.ico" />
-
-
+    <link rel="icon" href="/images/library_of_codexes_icon.ico" />
+    <meta name = "description" content = "<?php echo $_tpl['meta_desc']?>">
+    <meta name = "keywords" content = "library, codexes, video games, reading, lore, codex, dishonored, mass effect">
 
     <title><?php echo $_tpl['title']?></title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
-    <link href="/my-site/includes/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel='stylesheet'>
-    <link href="/my-site/css/font_style.css" rel = 'stylesheet' type = "text/css">
-    <link href="/my-site/css/nav_style.css" rel='stylesheet' type = "text/css">
-    <link href="/my-site/css/home_style.css" rel = 'stylesheet' type = "text/css">
-    <link href="/my-site/css/footer.css" rel='stylesheet' type = "text/css">
-</head>
+    <link href="/includes/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel='stylesheet'>
+    <link href="/css/font_style.css" rel = 'stylesheet' type = "text/css">
+    <link href="/css/nav_style.css" rel='stylesheet' type = "text/css">
+    <link href="/css/home_style.css" rel = 'stylesheet' type = "text/css">
+    <link href="/css/footer.css" rel='stylesheet' type = "text/css">
+ 
+ </head>
 
-<nav class="navbar navbar-default navbar-static-top" style = "margin-bottom:0px; border-bottom: 0px;">
-  <div class="container">
+  <body>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79563886-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+      <nav class="navbar navbar-default navbar-static-top" style = "margin-bottom:0px; border-bottom: 0px;">
+        <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -81,36 +48,35 @@ if(isset($_POST['submit']) && isset($name))
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class ="navbar-brand" href = "/my-site/"><b>Library of Codexes</b></a>           
+            <a class ="navbar-brand" href = "/"><b>Library of Codexes</b></a>           
           </div>  
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href = "/my-site/ebooks.php">Ebooks</a></li>
+              <li><a href = "/ebookslist">Ebooks</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Games<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href = "/my-site/game=9/Deus-Ex">Deus Ex</a></li>
-                  <li><a href = "/my-site/game=4/Diablo">Diablo</a><li>
-                  <li><a href = "/my-site/game=1/Dishonored">Dishonored</a></li>
-                  <li><a href = "/my-site/game=7/Fable">Fable</a></li>
-                  <li><a href = "/my-site/game=5/Mass-Effect">Mass Effect</a></li>
-                  <li><a href = "/my-site/game=2/Star-Wars:-The-Old-Republic">Star Wars: The Old Republic</a></li>
-                  <li><a href = "/my-site/game=8/The-Last-of-Us">The Last of Us</a></li>
-                  <li><a href = "/my-site/game=6/Tomb-Raider">Tomb Raider</a></li>
-                  <li><a href = "/my-site/game=3/Baldur's-Gate">Baldur's Gate</a></li>
+                  <li><a href = "/game=3/Baldur's-Gate">Baldur's Gate</a></li>
+                  <li><a href = "/game=9/Deus-Ex">Deus Ex</a></li>
+                  <li><a href = "/game=4/Diablo">Diablo</a><li>
+                  <li><a href = "/game=1/Dishonored">Dishonored</a></li>
+                  <li><a href = "/game=7/Fable">Fable</a></li>
+                  <li><a href = "/game=5/Mass-Effect">Mass Effect</a></li>
+                  <li><a href = "/game=2/Star-Wars-The-Old-Republic">Star Wars: The Old Republic</a></li>
+                  <li><a href = "/game=8/The-Last-of-Us">The Last of Us</a></li>
+                  <li><a href = "/game=6/Tomb-Raider">Tomb Raider</a></li>
                 </ul>
               </li>
             </ul>
             <div class="col-sm-12 col-md-3 pull-right">
               <ul class="nav navbar-nav">
-              <li><a data-toggle ="modal" href ="#donateModal"  >Donate</a></li>
-              <li><a data-toggle ="modal" href = "#contactModal">Contact</a></li>
-            </ul>
+                <li><a data-toggle ="modal" href ="#donateModal"  >Donate</a></li>
+                <li><a href = "/contact">Contact</a></li>
+              </ul>
             </div><!--/.col-sm-->        
           </div><!--/.nav-collapse -->
         </div><!--/container-->
       </nav>
-
 <!-- Donate Modal -->
 <div class="modal fade" id="donateModal" role="dialog">
   <div class="modal-dialog">
@@ -136,34 +102,3 @@ if(isset($_POST['submit']) && isset($name))
     </div>
   </div>
 </div><!--modal fade-->
-
-<div class ="modal fade" id ="contactModal" role ="dialog">
-  <div class = "modal-dialog">
-    <div class = "modal-content">
-      <div class ="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h3 style="color:red; text-align: center;">Contact </h3>
-      </div>
-      <div class="modal-body" style = "text-align: center;">
-        <div class="form-group">
-        <form role = "form"  method = "post" style = "font-size: 20px;" action ="index.php">
-          <label for = "name" class = "col-sm-12 col-md-12 control-label">* Name: </label>
-            <input type = "text" class = "form-control" id = "name" name ="name" placeholder = "Jaina Proudmoore" value = "<?php if(isset($name)) {echo htmlspecialchars($_POST['name']);}?>">
-            <?php if(isset($errorName)){ echo "<p class = 'text-danger'>$errorName</p>"; } ?><br/>
-          <label for = "message" class = "col-sm-12 col-md-12 control-label">* Message: </label>
-            <textarea class ="form-control" name = "message" placeholder = "Would love to see the Warcraft collection!" value = "<?php if(isset($message)) {echo htmlspecialchars($_POST['message']);}?>"></textarea>
-            <?php if(isset($errorMessage)){echo "<p class = 'text-danger'>$errorMessage</p>"; }?><br/>
-          <label for ="human" class = "col-sm-12 col-md-12 control-label"> * 2 + 7 = ? </label>
-            <input type = "text" class = "form-control" id = "human" name ="human" placeholder = "15">
-            <?php if(isset($errorHuman)){echo "<p class = 'text-danger'>$errorHuman</p>"; }?>
-        </form>
-        </div> 
-      </div>    
-      <div class="modal-footer">
-        <button class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-        <input type="submit" name="submit" id="submit" value="Send" class = "btn btn-md btn-primary" />
-      </div>
-    </div>
-  </div>
-</div>
-

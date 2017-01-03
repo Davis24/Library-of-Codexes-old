@@ -7,8 +7,7 @@
 #img1{
 	background-image: url("../images/OldBook.jpg");
 	background-size: cover;
-	
-
+	min-height: 250px;
 }
 @media (max-width: 360px) {
   .column-margin {

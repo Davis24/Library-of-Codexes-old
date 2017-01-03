@@ -48,7 +48,6 @@ footer {
 	text-decoration: none;
 	color: inherit;
 }
-
 @media (max-width: 360px){
 	body {
     	margin: 0 0 300px; /* bottom = footer height */

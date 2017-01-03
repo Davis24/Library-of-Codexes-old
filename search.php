@@ -1,19 +1,11 @@
 <?php 
     $_tpl = array();
     $_tpl['title'] = 'Library of Codexes';
-    $_tpl['meta_desc'] = 'Library of Codexes has a growing collection of ebooks in epub, azw3, and pdf format so you can take your reading on the go.';
+    $_tpl['meta_desc'] = 'A video game codex database website with authors, collections, and ebooks from your favorite games.';
 
   include ('header.php'); 
-  $config = parse_ini_file('config.ini');
-  // Try and connect to the database
-  $db = mysqli_connect('127.0.0.1',$config['username'],$config['password'],$config['dbname']);
-  // If connection was not successful, handle the error
-  if($db === false) {
-    // Handle error - notify administrator, log to a file, show an error screen, etc.
-    echo "you fucked up";
-  }
+  require_once('./includes/dbconnect.php');
 ?>
- 
 <div class = "container">
   <div class="row">
     <div class="col-md-12">
@@ -26,11 +18,9 @@
    			echo "<h1>Search results for ".$name ."</h1><br>";
    			echo '<div id="tabs">';
    			$name = str_replace("'", "%", $name);
-
-
    			//Codex Count Query
-   			$query = "SELECT COUNT(CODEX_TITLE) FROM CODEXES WHERE LOWER(CODEX_TITLE) LIKE LOWER('%".$name."%')";
-   			$result = mysqli_query($db, $query);
+   			$query = "SELECT COUNT(CODEX_TITLE) FROM codexes WHERE LOWER(CODEX_TITLE) LIKE LOWER('%".$name."%')";
+   			$result = mysqli_query($connection, $query);
    			echo '<ul>';
    				if(mysqli_num_rows($result) > 0)
    				{
@@ -39,10 +29,9 @@
    						echo '<li><a href = "#tabs-1" onclick = "reloadTable(1,\''.$name.'\')">Codexes ('.$row["COUNT(CODEX_TITLE)"].')</a></li>';
    					}
    				}
-
    				//Author Count Query
-  			 	$query = "SELECT COUNT(*) FROM AUTHORS WHERE LOWER(CONCAT(FIRST_NAME, ' ', LAST_NAME)) LIKE LOWER('%".$name."%')";
-	   	 		$result = mysqli_query($db, $query);		
+  			 	$query = "SELECT COUNT(*) FROM authors WHERE LOWER(CONCAT(FIRST_NAME, ' ', LAST_NAME)) LIKE LOWER('%".$name."%')";
+	   	 		$result = mysqli_query($connection, $query);		
 	   	 		if(mysqli_num_rows($result) > 0)
 	   	 		{
 	   	 			while($row = mysqli_fetch_assoc($result))
@@ -50,10 +39,9 @@
 	   	 				echo '<li><a href = "#tabs-1" onclick = "reloadTable(2,\''.$name.'\')">Authors ('.$row["COUNT(*)"].')</a></li>';
 	   	 			}
 	   	 		}
-
 	   	 		//Collection Count Query
-	   	 		$query = "SELECT COUNT(*) FROM COLLECTIONS WHERE LOWER(NAME) LIKE LOWER('%".$name."%')";
-	   	 		$result = mysqli_query($db, $query);		
+	   	 		$query = "SELECT COUNT(*) FROM collections WHERE LOWER(NAME) LIKE LOWER('%".$name."%')";
+	   	 		$result = mysqli_query($connection, $query);		
 	   	 		if(mysqli_num_rows($result) > 0)
 	   	 		{
 	   	 			while($row = mysqli_fetch_assoc($result))
@@ -76,14 +64,14 @@
            		<tbody>';
 
 	   			$query = "SELECT CODEX_TITLE, CODEX_ID FROM codexes WHERE LOWER(CODEX_TITLE) LIKE LOWER('%".$name."%')";
-	   			$result = mysqli_query($db, $query);
+	   			$result = mysqli_query($connection, $query);
 	   			if(mysqli_num_rows($result) > 0)
 	   			{
 	   				while($row = mysqli_fetch_assoc($result))
 	   				{
 	   					$codex_temp = str_replace(" ", "-", $row["CODEX_TITLE"]);
 	   					echo "<tr>";
-	   					echo "<td><a href = '/my-site/codex=".$row["CODEX_ID"]."/".$codex_temp."'>".$row["CODEX_TITLE"]. "</a></td>";
+	   					echo "<td><a href = '/codex=".$row["CODEX_ID"]."/".$codex_temp."'>".$row["CODEX_TITLE"]. "</a></td>";
 	   					echo "</tr>";
 	   				}
 	   			}	
@@ -92,7 +80,7 @@
         else
         { 
           echo '<div class = "container"><h1> Please enter a valid search query</h1><br>
-           <form method = "post" action = "search.php?t=1">
+           <form method = "post" action = "/search.php?t=1">
           <div class = "col-lg-8 col-lg-offset-2">
           <div class = "input-group input-group-lg">
           <input type="text" class="form-control" id="db-search" name = "search" placeholder="Search....">
@@ -109,7 +97,7 @@
 		else
 		{
 			echo '<div class = "container"><h1> Please enter a valid search query</h1><br>
-           <form method = "post" action = "search.php?t=1">
+           <form method = "post" action = "/search.php?t=1">
           <div class = "col-lg-8 col-lg-offset-2">
           <div class = "input-group input-group-lg">
           <input type="text" class="form-control" id="db-search" name = "search" placeholder="Search....">
@@ -128,6 +116,19 @@
 </div><!--/.container-->
 </div>
 <?php include('footer.php') ?>
+<link href="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<link rel="stylesheet" href="/includes/jquery-ui-1.11.4.custom/jquery-ui.css">
+<script src="/includes/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+<script type="text/javascript">
+  $('#example').dataTable();
+</script>
+<script>
+  $(function() {
+  $( "#tabs" ).tabs();
+    });
+</script>
 <script  type = "text/JavaScript">
   function reloadTable(user_choice, search_term)
     {
@@ -139,7 +140,7 @@
         {
             $.ajax ({
                 type: 'post',
-                url: '/my-site/searchtable.php',
+                url: '/searchtable.php',
                 data: {
                     choice:selection,
                     search:search_term,
